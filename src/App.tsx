@@ -17,6 +17,7 @@ import {
   verifySignature,
   hashTypedDataMessage,
   hashMessage,
+  recoverAddress,
 } from "./helpers/utilities";
 import { convertAmountToRawNumber, convertStringToHex } from "./helpers/bignumber";
 import { IAssetData } from "./helpers/types";
@@ -606,12 +607,15 @@ class App extends React.Component<any, any> {
       const hash = hashTypedDataMessage(message);
       const valid = await verifySignature(address, result, hash, chainId);
 
+      const recoveredAddress = await recoverAddress(result, hash)
+
       // format displayed result
       const formattedResult = {
         method: "eth_signTypedData",
-        address,
+        "Signing address": address,
         valid,
         result,
+        "Recovered address": recoveredAddress,
       };
 
       // display result

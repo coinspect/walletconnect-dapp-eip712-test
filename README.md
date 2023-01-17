@@ -1,5 +1,13 @@
 # WalletConnect Example Dapp
 
+Make sure to add your Infura API key in the `.env` file.
+
+## Install (Node 14+)
+
+```bash
+npm install
+```
+
 ## Develop
 
 ```bash
